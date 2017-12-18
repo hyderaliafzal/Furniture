@@ -1,0 +1,53 @@
+{
+  "name": "Product",
+  "plural": "Products",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "properties": {
+    "active": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "salePrice": {
+      "type": "string"
+    },
+    "discount": {
+      "type": "string"
+    },
+    "basePrice": {
+      "type": "string"
+    },
+    "retailPrice": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "categories": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "productId"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

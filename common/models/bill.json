@@ -1,0 +1,39 @@
+{
+  "name": "Bill",
+  "plural": "Bills",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "properties": {
+    "closed": {
+      "type": "boolean"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "discountTotal": {
+      "type": "string"
+    },
+    "paid": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "subTotal": {
+      "type": "string"
+    },
+    "grandTotal": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

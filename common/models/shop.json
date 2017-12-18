@@ -1,0 +1,43 @@
+{
+  "name": "Shop",
+  "plural": "Shops",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "categories": {
+      "type": "hasMany",
+      "model": "Category",
+      "foreignKey": "categoryId"
+    },
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": "",
+      "through": "Stock"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,60 @@
+{
+  "name": "Order",
+  "plural": "Orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "properties": {
+    "cancelled": {
+      "type": "boolean"
+    },
+    "cloded": {
+      "type": "boolean"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "grandTotal": {
+      "type": "string"
+    },
+    "itemTax": {
+      "type": "string"
+    },
+    "paid": {
+      "type": "boolean"
+    },
+    "payment": {
+      "type": "string"
+    },
+    "refunded": {
+      "type": "string"
+    },
+    "refundTotal": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "total": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

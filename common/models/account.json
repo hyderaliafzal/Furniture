@@ -1,0 +1,36 @@
+{
+  "name": "Account",
+  "plural": "Accounts",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "profilePicture": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "shops": {
+      "type": "hasMany",
+      "model": "Shop",
+      "foreignKey": "shopId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
