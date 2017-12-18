@@ -1,0 +1,36 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 2,
+    "ACL": 1,
+    "RoleMapping": 2,
+    "Role": 2,
+    "Account": 2,
+    "Shop": 1,
+    "Category": 1,
+    "Order": 1,
+    "Bill": 1,
+    "Product": 1
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {
+      "ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4": "{\"id\":\"ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4\",\"ttl\":1209600,\"created\":\"2017-12-18T08:39:59.890Z\",\"userId\":1}"
+    },
+    "ACL": {},
+    "RoleMapping": {
+      "1": "{\"principalType\":\"USER\",\"principalId\":\"1\",\"roleId\":1,\"id\":1}"
+    },
+    "Role": {
+      "1": "{\"name\":\"superAdmin\",\"created\":\"2017-12-18T08:39:37.435Z\",\"modified\":\"2017-12-18T08:39:37.435Z\",\"id\":1}"
+    },
+    "Account": {
+      "1": "{\"firstName\":\"super\",\"lastName\":\"admin\",\"username\":\"superadmin\",\"password\":\"$2a$10$eeuji0W2VFNCwwqIupRaeOjFKvnFonoEGaQRW.TwyGiYRNFOs2MxW\",\"email\":\"superadmin@email.com\",\"emailVerified\":true,\"createdAt\":\"2017-12-18T08:39:37.552Z\",\"updatedAt\":\"2017-12-18T08:39:37.552Z\",\"group\":\"admin\",\"id\":1}"
+    },
+    "Shop": {},
+    "Category": {},
+    "Order": {},
+    "Bill": {},
+    "Product": {}
+  }
+}
