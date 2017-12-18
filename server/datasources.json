@@ -3,15 +3,5 @@
     "name": "db",
     "connector": "memory",
     "file": "db.json"
-  },
-  "ldb": {
-    "host": "28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix.cloudant.com",
-    "port": 443,
-    "url": "https://28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix:27601fd30c7852326293aaed3f47500c0903ae63f199a3e5b0755b2debb8e49c@28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix.cloudant.com",
-    "database": "furniture",
-    "password": "27601fd30c7852326293aaed3f47500c0903ae63f199a3e5b0755b2debb8e49c",
-    "name": "db",
-    "connector": "cloudant",
-    "user": "28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix"
   }
 }
