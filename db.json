@@ -1,7 +1,7 @@
 {
   "ids": {
     "User": 1,
-    "AccessToken": 2,
+    "AccessToken": 3,
     "ACL": 1,
     "RoleMapping": 2,
     "Role": 2,
@@ -15,7 +15,8 @@
   "models": {
     "User": {},
     "AccessToken": {
-      "ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4": "{\"id\":\"ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4\",\"ttl\":1209600,\"created\":\"2017-12-18T08:39:59.890Z\",\"userId\":1}"
+      "ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4": "{\"id\":\"ohklBJqg564ByqpNEMj7L30SSm8Virn3txqExweBxWTF4An0AdErYdompo7zCnI4\",\"ttl\":1209600,\"created\":\"2017-12-18T08:39:59.890Z\",\"userId\":1}",
+      "R9Jn34N48dDucHOtE7RNAbFtIb30AqG7nfPerC7YPLMaFoeqbt8xfVtfbgXAVAPm": "{\"id\":\"R9Jn34N48dDucHOtE7RNAbFtIb30AqG7nfPerC7YPLMaFoeqbt8xfVtfbgXAVAPm\",\"ttl\":1209600,\"created\":\"2017-12-18T11:25:19.357Z\",\"userId\":1}"
     },
     "ACL": {},
     "RoleMapping": {
