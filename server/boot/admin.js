@@ -31,4 +31,22 @@ module.exports = function(app) {
       });
     }
   });
+	Role.find({where: {name: 'Accounts'}}, (err, role)=> {
+    if (!role || role.length === 0) {
+      Role.create({name: 'Accounts'}, (err, role)=> {
+        if (err) {
+          console.error(err);
+        }
+      });
+    }
+  });
+	Role.find({where: {name: 'Sales'}}, (err, role)=> {
+    if (!role || role.length === 0) {
+      Role.create({name: 'Sales'}, (err, role)=> {
+        if (err) {
+          console.error(err);
+        }
+      });
+    }
+  });
 };
