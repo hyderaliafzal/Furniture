@@ -31,9 +31,9 @@ module.exports = function(app) {
       });
     }
   });
-	Role.find({where: {name: 'Accounts'}}, (err, role)=> {
+	Role.find({where: {name: 'Manager'}}, (err, role)=> {
     if (!role || role.length === 0) {
-      Role.create({name: 'Accounts'}, (err, role)=> {
+      Role.create({name: 'Manager'}, (err, role)=> {
         if (err) {
           console.error(err);
         }
