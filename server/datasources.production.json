@@ -8,5 +8,5 @@
     "name": "db",
     "connector": "cloudant",
     "user": "28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix"
-  }
+  } // login to bluemix console with hyderaliafzal@gmail.com and go to cloudant
 }
