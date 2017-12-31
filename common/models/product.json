@@ -19,6 +19,18 @@
     "name": {
       "type": "string"
     },
+    "brand": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
     "price": {
       "type": "string"
     },
