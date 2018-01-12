@@ -19,6 +19,9 @@
     "name": {
       "type": "string"
     },
+    "category": {
+      "type": "string"
+    },
     "brand": {
       "type": "string"
     },
