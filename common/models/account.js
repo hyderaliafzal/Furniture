@@ -3,7 +3,7 @@
 module.exports = function(Account) {
     delete Account.validations.email;
     Account.observe('after save', (ctx, next) => {
-       if(isNewInstance === true){
+       if(ctx.isNewInstance === true){
             Account.app.models.Role.find({where: {name: ctx.instance.role}}, (err, role) => {
                 if(err) {
                     next(err, null);

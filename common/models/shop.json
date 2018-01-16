@@ -14,6 +14,9 @@
       "type": "string",
       "required": true
     },
+    "address": {
+      "type": "string"
+    },
     "logo": {
       "type": "string"
     },
@@ -34,8 +37,7 @@
     "products": {
       "type": "hasMany",
       "model": "Product",
-      "foreignKey": "",
-      "through": "Stock"
+      "foreignKey": "productId"
     }
   },
   "acls": [

@@ -30,9 +30,8 @@
   "validations": [],
   "relations": {
     "shops": {
-      "type": "hasMany",
-      "model": "Shop",
-      "foreignKey": "shopId"
+      "type": "belongsTo",
+      "model": "Shop"
     }
   },
   "acls": [

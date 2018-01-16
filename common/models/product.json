@@ -10,6 +10,9 @@
     "TimeStamp": true
   },
   "properties": {
+    "shopId": {
+      "type": "string"
+    },
     "active": {
       "type": "boolean"
     },
@@ -60,6 +63,11 @@
     "orders": {
       "type": "hasMany",
       "model": "Order",
+      "foreignKey": ""
+    },
+    "shop": {
+      "type": "hasMany",
+      "model": "Shop",
       "foreignKey": ""
     }
   },
