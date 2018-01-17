@@ -1,7 +1,12 @@
 {
   "db": {
+    "host": "ec2-54-197-233-123.compute-1.amazonaws.com",
+    "port": 5432,
+    "url": "postgres://lvdlgakdwmwaem:83c626ca809bb10a64a664bcda21b6c8ddcccbc83d407d8ecfd35bf4e1c873ec@ec2-54-197-233-123.compute-1.amazonaws.com:5432/d2l6cr5a65e012",
+    "database": "d2l6cr5a65e012",
+    "password": "83c626ca809bb10a64a664bcda21b6c8ddcccbc83d407d8ecfd35bf4e1c873ec",
     "name": "db",
-    "connector": "memory",
-    "file": "db.json"
+    "connector": "postgresql",
+    "user": "lvdlgakdwmwaem"
   }
 }
