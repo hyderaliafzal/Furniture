@@ -1,12 +1,12 @@
 {
   "db": {
-    "host": "28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix.cloudant.com",
-    "port": 443,
-    "url": "https://28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix:27601fd30c7852326293aaed3f47500c0903ae63f199a3e5b0755b2debb8e49c@28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix.cloudant.com",
-    "database": "furniture",
-    "password": "27601fd30c7852326293aaed3f47500c0903ae63f199a3e5b0755b2debb8e49c",
+    "host": "ec2-54-197-233-123.compute-1.amazonaws.com",
+    "port": 5432,
+    "url": "postgres://lvdlgakdwmwaem:83c626ca809bb10a64a664bcda21b6c8ddcccbc83d407d8ecfd35bf4e1c873ec@ec2-54-197-233-123.compute-1.amazonaws.com:5432/d2l6cr5a65e012",
+    "database": "d2l6cr5a65e012",
+    "password": "83c626ca809bb10a64a664bcda21b6c8ddcccbc83d407d8ecfd35bf4e1c873ec",
     "name": "db",
-    "connector": "cloudant",
-    "user": "28b73bb9-5c48-4ebe-b496-cf6f5fc2ca9f-bluemix"
+    "connector": "postgresql",
+    "user": "lvdlgakdwmwaem"
   }
 }
