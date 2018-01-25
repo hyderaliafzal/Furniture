@@ -46,13 +46,15 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "superAdmin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property":["find","findById","patchAttributes", "deleteById"]
     },
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$owner",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property":["find"]
     }
   ],
   "methods": {}

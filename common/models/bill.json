@@ -10,31 +10,38 @@
     "TimeStamp": true
   },
   "properties": {
-    "closed": {
-      "type": "boolean"
+    "customerName": {
+      "type": "string",
+      "required": true
     },
-    "currency": {
-      "type": "string"
+    "phoneNumber": {
+      "type": "string",
+      "required": true
     },
-    "discountTotal": {
+    "discount": {
       "type": "string"
     },
     "paid": {
       "type": "string"
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "subTotal": {
       "type": "string"
     },
-    "grandTotal": {
-      "type": "string"
+    "payment": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
   "relations": {
-    
+    "shop": {
+      "type": "belongsTo",
+      "model": "Shop"
+    }
   },
   "acls": [
     {

@@ -38,6 +38,10 @@
       "type": "hasMany",
       "model": "Product",
       "foreignKey": "productId"
+    },
+    "bills": {
+      "type": "hasMany",
+      "model": "Bill"
     }
   },
   "acls": [
