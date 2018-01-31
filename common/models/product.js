@@ -7,7 +7,9 @@ module.exports = function(Product) {
                 ctx.args.data.categoryId = category[0].id;
                 next();
             } else {
-                Product.app.models.Category.create({name: ctx.args.data.category}, (err, res) => {
+                Product.app.models.Category.create({
+                    name: ctx.args.data.category,
+                    shopId: ctx.args.data.shopId}, (err, res) => {
                     ctx.args.data.categoryId = res.id;
                     next();
                 });

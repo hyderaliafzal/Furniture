@@ -66,5 +66,9 @@
   "Stock": {
     "dataSource": "db",
     "public": true
+  },
+  "Expense": {
+    "dataSource": "db",
+    "public": true
   }
 }

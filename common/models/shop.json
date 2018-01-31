@@ -42,6 +42,10 @@
     "bills": {
       "type": "hasMany",
       "model": "Bill"
+    },
+    "expenses": {
+      "type": "hasMany",
+      "model": "Expense"
     }
   },
   "acls": [

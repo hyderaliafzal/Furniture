@@ -1,0 +1,44 @@
+{
+  "name": "Expense",
+  "plural": "Expenses",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "salaries": {
+      "type": "string"
+    },
+    "committee": {
+      "type": "string"
+    },
+    "stockWorth": {
+      "type": "string"
+    },
+    "extra": {
+      "type": "object"
+    },
+    "housholds": {
+      "type": "string"
+    },
+    "day": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "shop": {
+      "type": "belongsTo",
+      "model": "Shop"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

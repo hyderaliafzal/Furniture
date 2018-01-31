@@ -34,6 +34,18 @@
     "payment": {
       "type": "string",
       "required": true
+    },
+    "products": [
+      {"type": "string"}
+    ],
+    "day": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -41,6 +53,10 @@
     "shop": {
       "type": "belongsTo",
       "model": "Shop"
+    },
+    "products": {
+      "type": "hasMany",
+      "model": "Products"
     }
   },
   "acls": [
