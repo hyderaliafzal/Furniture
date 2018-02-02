@@ -69,6 +69,11 @@
       "type": "hasMany",
       "model": "Shop",
       "foreignKey": ""
+    },
+    "brandName": {
+      "type": "belongsTo",
+      "model": "Brand",
+      "foreignKey": ""
     }
   },
   "acls": [

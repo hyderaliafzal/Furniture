@@ -46,6 +46,16 @@
     "expenses": {
       "type": "hasMany",
       "model": "Expense"
+    },
+    "brands": {
+      "type": "hasMany",
+      "model": "Brand",
+      "foreignKey": ""
+    },
+    "brandDues": {
+      "type": "hasMany",
+      "model": "BrandDues",
+      "foreignKey": ""
     }
   },
   "acls": [

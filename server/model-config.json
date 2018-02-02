@@ -70,5 +70,13 @@
   "Expense": {
     "dataSource": "db",
     "public": true
+  },
+  "Brand": {
+    "dataSource": "db",
+    "public": true
+  },
+  "BrandDues": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -1,0 +1,32 @@
+{
+  "name": "BrandDues",
+  "plural": "BrandDues",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "brandName": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "brand": {
+      "type": "belongsTo",
+      "model": "Brand",
+      "foreignKey": ""
+    },
+    "shop": {
+      "type": "belongsTo",
+      "model": "Shop",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
