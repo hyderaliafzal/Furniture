@@ -1,7 +1,7 @@
 {
   "ids": {
     "User": 1,
-    "AccessToken": 2,
+    "AccessToken": 3,
     "ACL": 1,
     "RoleMapping": 3,
     "Role": 4,
@@ -9,15 +9,15 @@
     "Shop": 3,
     "Category": 2,
     "Order": 1,
-    "Bill": 2,
+    "Bill": 29,
     "Product": 2,
     "Stock": 1,
-    "Expense": 2
+    "Expense": 6
   },
   "models": {
     "User": {},
     "AccessToken": {
-      "r20yNGPqGYjdDs15tolMQBbLLNesS2jIBpQvuV6NxvOjG8ksS2oUuiT2PFox2vPA": "{\"id\":\"r20yNGPqGYjdDs15tolMQBbLLNesS2jIBpQvuV6NxvOjG8ksS2oUuiT2PFox2vPA\",\"ttl\":1209600,\"created\":\"2018-01-31T16:59:44.251Z\",\"userId\":1}"
+      "h0w2rri8xWLKhlv7O4qdmMOHoBSRGotGO6hodHuxumw6uXJQHWwHBBCaB0YKbOC2": "{\"id\":\"h0w2rri8xWLKhlv7O4qdmMOHoBSRGotGO6hodHuxumw6uXJQHWwHBBCaB0YKbOC2\",\"ttl\":1209600,\"created\":\"2018-02-02T16:32:41.489Z\",\"userId\":1}"
     },
     "ACL": {},
     "RoleMapping": {
@@ -37,18 +37,25 @@
       "2": "{\"name\":\"Woodworks\",\"address\":\"Gulberg III, Lahore\",\"createdAt\":\"2018-01-31T16:58:57.267Z\",\"updatedAt\":\"2018-01-31T16:58:57.267Z\",\"id\":2}"
     },
     "Category": {
-      "1": "{\"name\":\"Test\",\"createdAt\":\"2018-01-31T17:00:48.241Z\",\"updatedAt\":\"2018-01-31T17:00:48.241Z\",\"shopId\":\"1\",\"id\":1}"
+      "1": "{\"name\":\"Test\",\"createdAt\":\"2018-01-31T17:00:48.241Z\",\"updatedAt\":\"2018-02-02T16:44:07.132Z\",\"shopId\":\"1\",\"id\":1,\"description\":\"Test Description\"}"
     },
     "Order": {},
     "Bill": {
-      "1": "{\"customerName\":\"Hyder\",\"phoneNumber\":\"123445\",\"discount\":\"100\",\"status\":\"Paid\",\"payment\":\"1200\",\"products\":[\"[object Object]\"],\"day\":\"31\",\"month\":\"1\",\"year\":\"2018\",\"shopId\":1,\"createdAt\":\"2018-01-31T17:05:57.017Z\",\"updatedAt\":\"2018-01-31T17:05:57.018Z\",\"id\":1}"
+      "25": "{\"customerName\":\"Hyder\",\"phoneNumber\":\"123344566\",\"discount\":\"0\",\"status\":\"Paid\",\"payment\":\"2400\",\"day\":\"4\",\"month\":\"2\",\"year\":\"2018\",\"shopId\":1,\"createdAt\":\"2018-02-04T03:46:03.051Z\",\"updatedAt\":\"2018-02-04T03:46:03.052Z\",\"_products\":[{\"productId\":\"1\",\"quantity\":\"2\",\"basePrice\":\"0\",\"salePrice\":\"0\",\"id\":\"ebfb17b0-095d-11e8-ac94-3d8cc1d199c8\"}],\"id\":25}",
+      "26": "{\"customerName\":\"Hyder\",\"phoneNumber\":\"13356\",\"discount\":\"0\",\"status\":\"Paid\",\"payment\":\"3600\",\"day\":\"4\",\"month\":\"2\",\"year\":\"2018\",\"shopId\":1,\"createdAt\":\"2018-02-04T03:47:46.252Z\",\"updatedAt\":\"2018-02-04T03:47:46.253Z\",\"_products\":[{\"productId\":\"1\",\"quantity\":\"3\",\"basePrice\":\"0\",\"salePrice\":\"0\",\"id\":\"297e50c0-095e-11e8-ad79-e3992125cf60\"}],\"id\":26}",
+      "27": "{\"customerName\":\"hyder\",\"phoneNumber\":\"1334\",\"discount\":\"0\",\"status\":\"Paid\",\"payment\":\"2400\",\"day\":\"4\",\"month\":\"2\",\"year\":\"2018\",\"shopId\":1,\"createdAt\":\"2018-02-04T04:36:43.831Z\",\"updatedAt\":\"2018-02-04T04:36:43.831Z\",\"_products\":[{\"productId\":\"1\",\"quantity\":\"2\",\"basePrice\":\"1000\",\"salePrice\":\"1200\",\"id\":\"006d2560-0965-11e8-b28d-f7b2cd7bcc11\"}],\"id\":27}",
+      "28": "{\"customerName\":\"Hyder\",\"phoneNumber\":\"12345\",\"discount\":\"0\",\"status\":\"Paid\",\"payment\":\"10000\",\"day\":\"4\",\"month\":\"2\",\"year\":\"2018\",\"shopId\":1,\"createdAt\":\"2018-02-04T04:44:04.208Z\",\"updatedAt\":\"2018-02-04T04:44:04.208Z\",\"_products\":[{\"productId\":\"1\",\"quantity\":\"1\",\"basePrice\":\"1000\",\"salePrice\":\"1200\",\"id\":\"06e97f00-0966-11e8-b64d-4fad3e4a69fd\"}],\"id\":28}"
     },
     "Product": {
-      "1": "{\"shopId\":\"1\",\"name\":\"Test\",\"category\":\"Test\",\"brand\":\"Brand\",\"model\":\"Model\",\"image\":\"/static/media/table2.81481e52.JPG\",\"quantity\":\"100\",\"salePrice\":\"1200\",\"basePrice\":\"1000\",\"categoryId\":1,\"createdAt\":\"2018-01-31T17:00:48.243Z\",\"updatedAt\":\"2018-01-31T17:00:48.243Z\",\"color\":\"Color\",\"id\":1}"
+      "1": "{\"shopId\":\"1\",\"name\":\"Test\",\"category\":\"Test\",\"brand\":\"Brand\",\"model\":\"Model\",\"image\":\"/static/media/table2.81481e52.JPG\",\"quantity\":\"99\",\"salePrice\":\"1200\",\"basePrice\":\"1000\",\"categoryId\":1,\"createdAt\":\"2018-01-31T17:00:48.243Z\",\"updatedAt\":\"2018-02-04T04:44:04.204Z\",\"color\":\"Color\",\"id\":1}"
     },
     "Stock": {},
     "Expense": {
-      "1": "{\"salaries\":\"100000\",\"committee\":\"10000\",\"extra\":[{\"name\":\"123\"}],\"housholds\":\"12345\",\"month\":\"January\",\"year\":\"2018\",\"shopId\":1,\"id\":1}"
+      "1": "{\"salaries\":\"100000\",\"committee\":\"10000\",\"extra\":[{\"name\":\"123\"}],\"housholds\":\"12345\",\"month\":\"January\",\"year\":\"2018\",\"shopId\":1,\"id\":1}",
+      "2": "{\"salaries\":\"100000\",\"committee\":\"10000\",\"extra\":[{\"name\":\"\"}],\"housholds\":\"50000\",\"month\":\"February\",\"year\":\"2018\",\"shopId\":1,\"id\":2}",
+      "3": "{\"salaries\":\"100000\",\"committee\":\"10000\",\"extra\":[{\"name\":\"\"}],\"housholds\":\"50000\",\"month\":\"February\",\"year\":\"2018\",\"shopId\":1,\"id\":3}",
+      "4": "{\"salaries\":\"100000\",\"committee\":\"5000\",\"extra\":[{\"name\":\"\"}],\"housholds\":\"50000\",\"month\":\"February\",\"year\":\"2018\",\"shopId\":1,\"id\":4}",
+      "5": "{\"salaries\":\"50000\",\"committee\":\"10000\",\"extra\":[{\"name\":\"\"}],\"housholds\":\"50000\",\"month\":\"2\",\"year\":\"2018\",\"shopId\":1,\"id\":5}"
     }
   }
 }

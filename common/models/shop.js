@@ -15,34 +15,31 @@ module.exports = function(Shop) {
         next(err);
       } else {
         Shop.app.models.Expense.find(
-        {where: {month: month, year: year, shopId: shopId}},
-        (err, expense) => {
-          Shop.app.models.Bill.find(
-          {where: {shopId: shopId, status: 'Paid', month: month, year: year}},
-            (err, bills) => {
-              if (bills) {
-                let basePrices, salePrices;
-                bills.map(bill=>{
-                  bill.products.map(p => {
-                    Shop.app.models.Product.findById(p.productId,
-                      (err, product) => {
-                        console.log(product);
-                        if (product) {
-                          basePrices += (product.basePrice * p.quantity);
-                          salePrices += (product.salePrice * p.quantity);
-                        }
-                      });
+          {where: {month: month, year: year, shopId: shopId}},
+          (err, expense) => {
+            Shop.app.models.Bill.find(
+              {where: {shopId: shopId, status: 'Paid',
+                month: month, year: year}},
+              (err, bills) => {
+                if (bills) {
+                  let basePrices = 0; let salePrices = 0; let payment = 0;
+                  bills.map(bill=>{
+                    payment += parseInt(bill.payment);
+                    bill._products.forEach(p => {
+                      basePrices += (p.basePrice * p.quantity);
+                      salePrices += (p.salePrice * p.quantity);
+                    });
                   });
-                });
-                let response = {
-                  basePrices: basePrices,
-                  salePrices: salePrices,
-                  expense: expense};
-                next(null, response);
+                  let response = {
+                    payment: payment,
+                    basePrices: basePrices,
+                    salePrices: salePrices,
+                    expense: expense};
+                  next(null, response);
+                }
               }
-            }
-          );
-        });
+            );
+          });
       }
     });
   };
@@ -62,27 +59,23 @@ module.exports = function(Shop) {
         next(err);
       } else {
         Shop.app.models.Expense.find(
-          {where: {day: day, month: month, year: year, shopId: shopId}},
+          {where: {month: month, year: year, shopId: shopId}},
           (err, expense) => {
             Shop.app.models.Bill.find(
               {where: {shopId: shopId, status: 'Paid',
                 day: day, month: month, year: year}},
               (err, bills) => {
-                console.log(bills);
                 if (bills) {
-                  let basePrices, salePrices;
+                  let basePrices = 0; let salePrices = 0; let payment = 0;
                   bills.map(bill=>{
-                    bill.products.map(p => {
-                      Shop.app.models.Product.findById(p.productId,
-                        (err, product) => {
-                          if (product) {
-                            basePrices += (product.basePrice * p.quantity);
-                            salePrices += (product.salePrice * p.quantity);
-                          }
-                        });
+                    payment += parseInt(bill.payment);
+                    bill._products.forEach(p => {
+                      basePrices += (p.basePrice * p.quantity);
+                      salePrices += (p.salePrice * p.quantity);
                     });
                   });
                   let response = {
+                    payment: payment,
                     basePrices: basePrices,
                     salePrices: salePrices,
                     expense: expense};

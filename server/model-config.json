@@ -78,5 +78,9 @@
   "BrandDues": {
     "dataSource": "db",
     "public": true
+  },
+  "billProducts": {
+    "dataSource": "db",
+    "public": true
   }
 }

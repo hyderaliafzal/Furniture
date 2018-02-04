@@ -19,7 +19,8 @@
       "required": true
     },
     "discount": {
-      "type": "string"
+      "type": "string",
+      "default": 0
     },
     "paid": {
       "type": "string"
@@ -34,13 +35,6 @@
     "payment": {
       "type": "string",
       "required": true
-    },
-    "products": {
-      "type": [
-        {
-          "type": "string"
-        }
-      ]
     },
     "day": {
       "type": "string"
@@ -59,8 +53,13 @@
       "model": "Shop"
     },
     "products": {
-      "type": "hasMany",
-      "model": "Products"
+      "type": "embedsMany",
+      "model": "billProducts",
+      "property": "products",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [
