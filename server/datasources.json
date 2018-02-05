@@ -1,7 +1,12 @@
 {
   "db": {
+     "host": "ds225038.mlab.com",
+    "port": 25038,
+    "url": "mongodb://hyder:hyder@ds225038.mlab.com:25038/furniture",
+    "database": "furniture",
+    "password": "hyder",
     "name": "db",
-    "file": "db.json",
-    "connector": "memory"
+    "connector": "mongodb",
+    "user": "hyder"
   }
 }
