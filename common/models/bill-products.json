@@ -1,0 +1,32 @@
+{
+  "name": "billProducts",
+  "plural": "billProducts",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "productId": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "basePrice": {
+      "type": "string"
+    },
+    "salePrice": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

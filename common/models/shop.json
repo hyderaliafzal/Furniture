@@ -1,0 +1,82 @@
+{
+  "name": "Shop",
+  "plural": "Shops",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "categories": {
+      "type": "hasMany",
+      "model": "Category",
+      "foreignKey": "categoryId"
+    },
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": "productId"
+    },
+    "bills": {
+      "type": "hasMany",
+      "model": "Bill"
+    },
+    "expenses": {
+      "type": "hasMany",
+      "model": "Expense"
+    },
+    "brands": {
+      "type": "hasMany",
+      "model": "Brand",
+      "foreignKey": ""
+    },
+    "brandDues": {
+      "type": "hasMany",
+      "model": "BrandDues",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "Manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "superAdmin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

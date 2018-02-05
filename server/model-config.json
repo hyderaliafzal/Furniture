@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Message": {
+    "dataSource": null
+  },
+  "Account": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Shop": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Category": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Order": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Bill": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Stock": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Expense": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Brand": {
+    "dataSource": "db",
+    "public": true
+  },
+  "BrandDues": {
+    "dataSource": "db",
+    "public": true
+  },
+  "billProducts": {
+    "dataSource": "db",
+    "public": true
+  }
+}
