@@ -6,28 +6,42 @@ module.exports = function(Product) {
       (err, category) => {
         if (category.length > 0) {
           ctx.args.data.categoryId = category[0].id;
-          // next();
+          Product.app.models.Brand.find({where: {name: ctx.args.data.brand,
+            shopId: ctx.args.data.shopId}},
+            (err, brand) => {
+              console.log(brand);
+              if (brand.length > 0) {
+                ctx.args.data.brandId = brand[0].id;
+                next();
+              } else {
+                Product.app.models.Brand.create({name: ctx.args.data.brand},
+                  (err, brand) => {
+                    ctx.args.data.brandId = brand.id;
+                    next();
+                  });
+              }
+            });
         } else {
           Product.app.models.Category.create({
             name: ctx.args.data.category,
             shopId: ctx.args.data.shopId}, (err, res) => {
             ctx.args.data.categoryId = res.id;
-            // next();
+            Product.app.models.Brand.find({where: {name: ctx.args.data.brand}},
+              (err, brand) => {
+                if (brand.length > 0) {
+                  ctx.args.data.brandId = brand[0].id;
+                  next();
+                } else {
+                  Product.app.models.Brand.create({name: ctx.args.data.brand,
+                    shopId: ctx.args.data.shopId},
+                    (err, brand) => {
+                      ctx.args.data.brandId = brand.id;
+                      next();
+                    });
+                }
+              });
           });
         }
-        Product.app.models.Brand.find({where: {name: ctx.args.data.brand}},
-          (err, brand) => {
-            if (brand.length > 0) {
-              ctx.args.data.brandId = brand[0].id;
-              next();
-            } else {
-              Product.app.models.Brand.create({name: ctx.args.data.brand},
-                (err, brand) => {
-                  ctx.args.data.brandId = brand.id;
-                  next();
-                });
-            }
-          });
       });
   });
 };
