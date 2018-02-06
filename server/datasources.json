@@ -2,10 +2,11 @@
   "db": {
     "name": "db",
     "connector": "mongodb",
-    "host": "ds225038.mlab.com",
+    "hostname": "ds225038.mlab.com",
     "port": "25038",
     "user": "hyder",
     "password": "hyder",
+    "database": "furniture",
     "url": "mongodb://hyder:hyder@ds225038.mlab.com:25038/furniture"
   }
 }
