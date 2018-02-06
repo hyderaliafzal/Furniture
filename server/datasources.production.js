@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 module.exports = {
   db: {
     connector: 'mongodb',
@@ -10,3 +10,4 @@ module.exports = {
     database: process.env.DB_NAME || 'furniture',
   },
 };
+*/
