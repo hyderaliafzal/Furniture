@@ -1,7 +1,10 @@
 {
   "db": {
-    "connector": "memory",
-    "name": "db",
-    "file": "db.json"
+    "connector": "mongodb",
+    "hostname": "ds127888.mlab.com",
+    "port": 27888,
+    "user": "hyder",
+    "password": "hyder",
+    "database": "furniture7766"
   }
 }
