@@ -51,7 +51,8 @@
         "find",
         "findById",
         "patchAttributes",
-        "deleteById"
+        "deleteById",
+        "create"
       ]
     },
     {

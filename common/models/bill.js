@@ -1,6 +1,24 @@
 'use strict';
 
 module.exports = function(Bill) {
+  Bill.remoteMethod('bills', {
+    accepts: [{arg: 'shopId', type: 'string'},
+      {arg: 'day', type: 'string'},
+      {arg: 'month', type: 'string'},
+      {arg: 'year', type: 'string'}],
+    returns: {arg: 'bills', type: 'object'},
+    http: {path: '/bills', verb: 'get'},
+  });
+
+  Bill.bills = (shopId, day, month, year, next) => {
+    Bill.find({where: {shopId: shopId, day: day, month: month, year: year}}, (err, bills) => {
+      if(bills){
+        next(null, bills);
+      } else {
+        next();
+    }
+  });
+  }
   Bill.beforeRemote('create', (ctx, instance, next) => {
     let count = 0;
     ctx.args.data._products.forEach((value, index) => {

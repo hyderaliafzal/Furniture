@@ -68,8 +68,9 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "Manager",
-      "permission": "ALLOW"
+      "principalId": "Employee",
+      "permission": "ALLOW",
+      "property": "shop"
     },
     {
       "accessType": "*",

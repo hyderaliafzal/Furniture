@@ -1,6 +1,5 @@
 'use strict';
 module.exports = function(app) {
-  console.log("here");
   app.models.Shop.find((err, res) => {
     console.log("shop",res);
     if (res.length < 2) {

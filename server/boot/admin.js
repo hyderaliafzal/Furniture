@@ -31,18 +31,9 @@ module.exports = function(app) {
       });
     }
   });
-	Role.find({where: {name: 'Manager'}}, (err, role)=> {
+	Role.find({where: {name: 'Employee'}}, (err, role)=> {
     if (!role || role.length === 0) {
-      Role.create({name: 'Manager'}, (err, role)=> {
-        if (err) {
-          console.error(err);
-        }
-      });
-    }
-  });
-	Role.find({where: {name: 'Sales'}}, (err, role)=> {
-    if (!role || role.length === 0) {
-      Role.create({name: 'Sales'}, (err, role)=> {
+      Role.create({name: 'Employee'}, (err, role)=> {
         if (err) {
           console.error(err);
         }

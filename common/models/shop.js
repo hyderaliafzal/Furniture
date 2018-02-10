@@ -1,6 +1,40 @@
 'use strict';
 
 module.exports = function(Shop) {
+  Shop.remoteMethod('shop', {    accepts: [
+    {arg: 'request', type: 'object', http: {source: 'req'}},
+],
+    returns: {arg: 'shop', type: 'Shop', root: true},
+    http: {path: '/shop', verb: 'get'},
+  });
+  Shop.shop = (ctx, next) => {
+    let userId = ctx.accessToken.userId;
+   Shop.app.models.RoleMapping.findOne({where: {principalId: userId},
+    include: {relation: 'role'},
+    scope: {include: ['Role']}},
+  (err, role) => {
+    if(role){
+      if(role.toJSON().role.name === 'superAdmin'){
+        Shop.find((err, shop) => {
+          next(null, shop);
+        });
+      } else {
+        Shop.app.models.Account.findById(userId, (err, account) => {
+          Shop.findById(account.shopId, (err, shop) => {
+            if(shop){
+              console.log(shop);
+              return next(null, [shop]);
+            } else {
+              return next(null, []);
+            }
+          });
+        });
+      }
+    } else {
+      return next('No Role Found', null);
+    }
+  });
+  }
   Shop.remoteMethod('getMonthlyReport', {
     accepts: [{arg: 'shopId', type: 'string'},
       {arg: 'month', type: 'string'},

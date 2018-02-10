@@ -1,6 +1,22 @@
 'use strict';
 
 module.exports = function(Product) {
+  Product.remoteMethod('products', {
+    accepts: [{arg: 'shopId', type: 'string'}],
+    returns: {arg: 'products', type: 'object'},
+    http: {path: '/products', verb: 'get'},
+  });
+
+  Product.products = (shopId, next) => {
+    Product.find({where: {shopId: shopId}}, (err, products) => {
+      if(products){
+        next(null, products);
+      } else {
+        next();
+      }
+    });
+  }
+
   Product.beforeRemote('create', (ctx, _instance_, next) => {
     Product.app.models.Category.find({where: {name: ctx.args.data.category}},
       (err, category) => {
