@@ -1,6 +1,43 @@
 'use strict';
 
 module.exports = function(Bill) {
+  Bill.beforeRemote('prototype.patchAttributes', (ctx, instance, next) => {
+    ctx.args.data._products = ctx.args.data.newProducts;
+    let count = 0;
+    ctx.instance._products.map(product => {
+      Bill.app.models.Product.findById(product.productId,
+      (err, productRes) => {
+        if(err){
+          return next(err, null);
+        }
+        let quantity = parseInt(productRes.quantity) + parseInt(product.quantity);
+        console.log('quantity1',quantity);
+        Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
+          (err, res) => {
+          count ++;
+          if(count === ctx.instance._products.length){
+            count = 0;
+            ctx.args.data.newProducts.map(product => {
+              Bill.app.models.Product.findById(product.productId, (err, productRes) => {
+                if(err){
+                  return next(err, null);
+                }
+              let quantity = parseInt(productRes.quantity) - parseInt(product.quantity);
+                console.log('quantity2',product, productRes, quantity);
+                Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
+                  (err, res) => {
+                  count++;
+                  if(count === ctx.args.data.newProducts.length){
+                    next();
+                  }
+                });
+            })
+            });
+          }
+        });
+      });
+    });
+  });
   Bill.remoteMethod('bills', {
     accepts: [{arg: 'shopId', type: 'string'},
       {arg: 'day', type: 'string'},
@@ -15,10 +52,11 @@ module.exports = function(Bill) {
       if(bills){
         next(null, bills);
       } else {
-        next();
-    }
-  });
-  }
+        next(null, []);
+      }
+    });
+  };
+
   Bill.beforeRemote('create', (ctx, instance, next) => {
     let count = 0;
     ctx.args.data._products.forEach((value, index) => {
