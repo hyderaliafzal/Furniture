@@ -77,7 +77,7 @@
       "principalType": "ROLE",
       "principalId": "superAdmin",
       "permission": "ALLOW",
-      "property": "*"
+      "property": ["create", "find", "patchAttributes", "bills"]
     }
   ],
   "methods": {}
