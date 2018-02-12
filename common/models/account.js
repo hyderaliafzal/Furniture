@@ -25,4 +25,19 @@ module.exports = function(Account) {
     }
   });
 
+  Account.remoteMethod('role', {    accepts: [
+      {arg: 'request', type: 'object', http: {source: 'req'}},
+    ],
+    returns: {arg: 'role', type: 'string', root: true},
+    http: {path: '/role', verb: 'get'},
+  });
+
+  Account.role = (ctx, next) => {
+    console.log(ctx);
+    Account.app.models.RoleMapping.findOne({where: {principalId: ctx.accessToken.userId},
+      include: {relation: 'role'},
+      scope: {include: ['Role']}}, (err, res) => {
+      next(null, res);
+  });
+  }
 };
