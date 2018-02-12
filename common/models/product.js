@@ -7,10 +7,19 @@ module.exports = function(Product) {
     http: {path: '/products', verb: 'get'},
   });
 
-  Product.products = (shopId, next) => {
-    Product.find({shopId: shopId}, (err, products) => {
-      if(products){
-        next(null, products);
+ Product.products = (shopId, next) => {
+    let products = [];
+    Product.find({shopId: shopId}, (err, product) => {
+      if(product.length > 0){
+        let count = 1;
+        product.map(pr => {
+          if(pr.shopId === shopId){
+            products.push(pr);
+          }
+          if(count === product.length){
+            next(null, products);
+          }
+        });
       } else {
         next();
       }
