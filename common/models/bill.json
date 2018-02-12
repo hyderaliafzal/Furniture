@@ -70,7 +70,7 @@
       "principalType": "ROLE",
       "principalId": "Employee",
       "permission": "ALLOW",
-      "property": ["create", "find"]
+      "property": ["create", "find", "bills"]
     },
     {
       "accessType": "*",
