@@ -8,7 +8,8 @@ module.exports = function(Product) {
   });
 
   Product.products = (shopId, next) => {
-    Product.find({where: {shopId: shopId}}, (err, products) => {
+    console.log(shopId);
+    Product.find({shopId: shopId}, (err, products) => {
       if(products){
         next(null, products);
       } else {
