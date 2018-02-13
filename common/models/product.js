@@ -13,7 +13,7 @@ module.exports = function(Product) {
       if(products){
         next(null, products);
       } else {
-        next();
+        next(null, []);
       }
     });
   }

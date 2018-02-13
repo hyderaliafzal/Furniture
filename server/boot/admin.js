@@ -15,7 +15,7 @@ module.exports = function(app) {
               Account.create([{username: 'superadmin',
                 email: 'superadmin@email.com',
                 firstName: 'super', lastName: 'admin', group: 'admin',
-                password: 'superadmin', emailVerified: true},
+                password: 'superadmin', emailVerified: true, role: 'superAdmin'},
               ], (err, user)=> {
                 RoleMapping.create({
                   principalType: RoleMapping.USER,
