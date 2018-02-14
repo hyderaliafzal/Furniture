@@ -16,6 +16,7 @@ module.exports = function(Product) {
           if(pr.shopId === shopId){
             products.push(pr);
           }
+          count++;
           if(count === product.length){
             next(null, products);
           }
