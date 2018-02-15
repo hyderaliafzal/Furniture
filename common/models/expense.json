@@ -7,6 +7,9 @@
     "validateUpsert": true
   },
   "properties": {
+    "type": {
+      "type": "string"
+    },
     "salaries": {
       "type": "string"
     },
