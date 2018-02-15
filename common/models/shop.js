@@ -16,7 +16,6 @@ module.exports = function(Shop) {
     if(role){
       console.log(role.toJSON().role);
       if(role.toJSON().role.name === 'superAdmin'){
-        console.log(shop);
         Shop.find((err, shop) => {
           next(null, shop);
         });
