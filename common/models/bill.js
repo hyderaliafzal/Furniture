@@ -11,7 +11,6 @@ module.exports = function(Bill) {
           return next(err, null);
         }
         let quantity = parseInt(productRes.quantity) + parseInt(product.quantity);
-        console.log('quantity1',quantity);
         Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
           (err, res) => {
           count ++;
@@ -23,7 +22,6 @@ module.exports = function(Bill) {
                   return next(err, null);
                 }
               let quantity = parseInt(productRes.quantity) - parseInt(product.quantity);
-                console.log('quantity2',product, productRes, quantity);
                 Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
                   (err, res) => {
                   count++;

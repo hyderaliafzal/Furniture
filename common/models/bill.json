@@ -70,14 +70,14 @@
       "principalType": "ROLE",
       "principalId": "Employee",
       "permission": "ALLOW",
-      "property": ["create", "find"]
+      "property": ["create", "find", "bills"]
     },
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "superAdmin",
       "permission": "ALLOW",
-      "property": "*"
+      "property": ["create", "find", "patchAttributes", "bills"]
     }
   ],
   "methods": {}

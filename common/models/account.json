@@ -63,6 +63,15 @@
       "property": [
         "find"
       ]
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": [
+        "role"
+      ]
     }
   ],
   "methods": {}
