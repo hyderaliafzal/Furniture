@@ -56,6 +56,11 @@
       "type": "hasMany",
       "model": "BrandDues",
       "foreignKey": ""
+    },
+    "dailyExpenses": {
+      "type": "hasMany",
+      "model": "DailyExpense",
+      "foreignKey": ""
     }
   },
   "acls": [
