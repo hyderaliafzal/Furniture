@@ -82,5 +82,9 @@
   "billProducts": {
     "dataSource": "db",
     "public": true
+  },
+  "DailyExpense": {
+    "dataSource": "db",
+    "public": true
   }
 }

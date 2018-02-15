@@ -40,7 +40,13 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY",
-      "property": ["create", "find", "findById", "patchAttributes", "deleteById"]
+      "property": [
+        "create",
+        "find",
+        "findById",
+        "patchAttributes",
+        "deleteById"
+      ]
     },
     {
       "accessType": "*",
