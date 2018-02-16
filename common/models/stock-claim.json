@@ -1,0 +1,59 @@
+{
+  "name": "StockClaim",
+  "plural": "StockClaims",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "customerName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "number"
+    },
+    "returnedItems": {
+      "type": [
+        "object"
+      ]
+    },
+    "Items": {
+      "type": [
+        "object"
+      ]
+    },
+    "claimPrice": {
+      "type": "number"
+    },
+    "discount": {
+      "type": "number"
+    },
+    "payment": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "shop": {
+      "type": "belongsTo",
+      "model": "Shop",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

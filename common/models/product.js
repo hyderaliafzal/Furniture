@@ -40,7 +40,8 @@ module.exports = function(Product) {
                 ctx.args.data.brandId = brand[0].id;
                 next();
               } else {
-                Product.app.models.Brand.create({name: ctx.args.data.brand},
+                Product.app.models.Brand.create(
+                  {name: ctx.args.data.brand, shopId: ctx.args.data.shopId},
                   (err, brand) => {
                     ctx.args.data.brandId = brand.id;
                     next();

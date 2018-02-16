@@ -61,6 +61,11 @@
       "type": "hasMany",
       "model": "DailyExpense",
       "foreignKey": ""
+    },
+    "stockClaims": {
+      "type": "hasMany",
+      "model": "StockClaim",
+      "foreignKey": ""
     }
   },
   "acls": [
