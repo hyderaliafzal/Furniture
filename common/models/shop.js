@@ -130,24 +130,4 @@ module.exports = function(Shop) {
     http: {path: '/test', verb: 'get'},
   });
 
-  Shop.test = (ctx, next) => {
-    Shop.find((err, shops) => {
-      if(shops.length > 0){
-        shops.map(shop => {
-          Shop.app.models.Bills.find(
-          {where: {shopId: shop.id, day: day, month: month, year: year, products.productId: {inq: }}},
-          (err, bills) => {
-
-          });
-          Shop.app.models.Brand.find({where: {shopId: shop.id},
-          include: {relation: 'products'}, scope: {relation: 'Product'}},
-          (err, brand) => {
-            console.log(brand.products);
-        });
-        });
-      } else {
-        next();
-    }
-    });
-  }
 };
