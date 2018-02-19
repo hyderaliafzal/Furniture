@@ -63,6 +63,7 @@ module.exports = function(Bill) {
             ctx.args.data._products[index].salePrice = product.salePrice;
             ctx.args.data._products[index].basePrice = product.basePrice;
             ctx.args.data._products[index].brandId = product.brandId;
+            ctx.args.data._products[index].brand = product.brand;
             // console.log(ctx.args.data._products[index]);
             let quantity = parseInt(product.quantity) - parseInt(value.quantity);
             if (quantity < 0) {
