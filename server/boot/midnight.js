@@ -1,6 +1,6 @@
 'use strict';
 var models = require('../server').models;
-
+var moment = require('moment');
 var schedule = require('node-schedule');
 var d = new Date();
 var weekday = new Array(7);
@@ -12,29 +12,18 @@ weekday[4] = 'Thursday';
 weekday[5] = 'Friday';
 weekday[6] = 'Saturday';
 var n = weekday[d.getDay()];
-var j = schedule.scheduleJob('* * * 0 0 0', function() {
-  var today = d.getDate();
-  var days = [
-    {day: d.getDate(), month: d.getMonth(), year: d.getFullYear()},
-  ];
-  let yesterday = new Date(today);
-  for (let count = -1; count > -7; count--) {
-    days.push({
-      day: d.getDate(),
-      month: d.getMonth(),
-      year: d.getFullYear(),
-    });
-  }
-  console.log(days);
-
-  models.Shop.find((err, shops) => {
+var j = schedule.scheduleJob('* * * * * *', function() {
+  let brandpeyments = [];
+  models.Shop.find({}, (err, shops) => {
     if (shops) {
       shops.map(shop => {
-        let i;
-        for (i = 0; i < 7; i++) {
-          models.Bill.find({where: {shopId: shop.id, i}}, (err, bills) => {
-            // console.log(bills);
-          });
+        for (let count = 0; count < 7; count++) {
+          let date = moment().subtract(count, 'day').format('YYYY-M-DD').split('-');
+          console.log(shop.id, date);
+          models.Bill.find({where: {shopId: shop.id, day: date[2], month: date[1], year: date[0]}},
+            (err, bills) => {
+              console.log(bills);
+            });
         }
       });
     }
@@ -43,3 +32,4 @@ var j = schedule.scheduleJob('* * * 0 0 0', function() {
 
   }
 });
+
