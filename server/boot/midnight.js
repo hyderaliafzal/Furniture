@@ -13,7 +13,7 @@ weekday[5] = 'Friday';
 weekday[6] = 'Saturday';
 var n = weekday[d.getDay()];
 var j = schedule.scheduleJob('* * * * * *', function() {
-  let brandpeyments = [];
+  let brandpayments = [];
   models.Shop.find({}, (err, shops) => {
     if (shops) {
       shops.map(shop => {
@@ -22,8 +22,19 @@ var j = schedule.scheduleJob('* * * * * *', function() {
           console.log(shop.id, date);
           models.Bill.find({where: {shopId: shop.id, day: date[2], month: date[1], year: date[0]}},
             (err, bills) => {
-              console.log(bills);
-            });
+              if(bills.length>0){
+                bills.map(bill => {
+                  if(brandpayments.length === 0){
+                    let basePrice = 0;
+                    bill._products.map(p=>{
+                      basePrice = parseInt(p.basePrice) * parseInt(p.quantity);
+                    });
+                    brandpayments = [{shopId: shop.id, day: date[2], month: date[1], year: date[0],
+                                      basePrice: basePrice}]  
+                  }
+                });  
+              }
+          });
         }
       });
     }
