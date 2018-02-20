@@ -30,9 +30,9 @@ var j = schedule.scheduleJob('* * * * * *', function() {
   //                     basePrice = parseInt(p.basePrice) * parseInt(p.quantity);
   //                   });
   //                   brandpayments = [{shopId: shop.id, day: date[2], month: date[1], year: date[0],
-  //                                     basePrice: basePrice}]  
+  //                                     basePrice: basePrice}]
   //                 }
-  //               });  
+  //               });
   //             }
   //         });
   //       }

@@ -1,28 +1,28 @@
 'use strict';
 
 module.exports = function(Shop) {
-  Shop.remoteMethod('shop', {    accepts: [
+  Shop.remoteMethod('shop', {accepts: [
     {arg: 'request', type: 'object', http: {source: 'req'}},
-],
+  ],
     returns: {arg: 'shop', type: 'Shop', root: true},
     http: {path: '/shop', verb: 'get'},
   });
   Shop.shop = (ctx, next) => {
     let userId = ctx.accessToken.userId;
-   Shop.app.models.RoleMapping.findOne({where: {principalId: userId},
-    include: {relation: 'role'},
-    scope: {include: ['Role']}},
+    Shop.app.models.RoleMapping.findOne({where: {principalId: userId},
+      include: {relation: 'role'},
+      scope: {include: ['Role']}},
   (err, role) => {
-    if(role){
+    if (role) {
       console.log(role.toJSON().role);
-      if(role.toJSON().role.name === 'superAdmin'){
+      if (role.toJSON().role.name === 'superAdmin') {
         Shop.find((err, shop) => {
           next(null, shop);
         });
       } else {
         Shop.app.models.Account.findById(userId, (err, account) => {
           Shop.findById(account.shopId, (err, shop) => {
-            if(shop){
+            if (shop) {
               console.log(shop);
               return next(null, [shop]);
             } else {
@@ -35,7 +35,7 @@ module.exports = function(Shop) {
       return next('No Role Found', null);
     }
   });
-  }
+  };
   Shop.remoteMethod('getMonthlyReport', {
     accepts: [{arg: 'shopId', type: 'string'},
       {arg: 'month', type: 'string'},
@@ -69,7 +69,8 @@ module.exports = function(Shop) {
                     payment: payment,
                     basePrices: basePrices,
                     salePrices: salePrices,
-                    expense: expense};
+                    expense: expense,
+                    dailyExp: expenseTotalMonthly(month, year, shopId)};
                   next(null, response);
                 }
               }
@@ -78,6 +79,28 @@ module.exports = function(Shop) {
       }
     });
   };
+
+  function expenseTotalMonthly(month, year, shopId) {
+    return new Promise(resolve => {
+      Shop.app.models.DailyExpense.find({where: {
+        shopId: shopId, month: month, year: year,
+      }}, (err, expense) => {
+        if (expense.length > 0) {
+          let amount = 0;
+          let count = 1;
+          expense.map(exp => {
+            amount += parseInt(exp.drinks) + parseInt(exp.shopExp) + parseInt(exp.others);
+            count++;
+            if (count === expense.length) {
+              return resolve(amount);
+            }
+          });
+        } else {
+          return resolve(0);
+        }
+      });
+    });
+  }
 
   Shop.remoteMethod('getDailyReport', {
     accepts: [{arg: 'shopId', type: 'string'},
@@ -93,41 +116,45 @@ module.exports = function(Shop) {
       if (err || shop === null) {
         next(err);
       } else {
-        Shop.app.models.Expense.find(
-          {where: {month: month, year: year, shopId: shopId}},
-          (err, expense) => {
-            Shop.app.models.Bill.find(
-              {where: {shopId: shopId, status: 'Paid',
-                day: day, month: month, year: year}},
-              (err, bills) => {
-                if (bills) {
-                  let basePrices = 0; let salePrices = 0; let payment = 0;
-                  bills.map(bill=>{
-                    payment += parseInt(bill.payment);
-                    bill._products.forEach(p => {
-                      basePrices += (p.basePrice * p.quantity);
-                      salePrices += (p.salePrice * p.quantity);
-                    });
+        expenseTotalDaily(day, month, year, shopId).then(amount => {
+          Shop.app.models.Bill.find({where: {shopId: shopId, status: 'Paid',
+            day: day, month: month, year: year}},
+            (err, bills) => {
+              if (bills) {
+                let basePrices = 0; let salePrices = 0; let payment = 0;
+                bills.map(bill=>{
+                  payment += parseInt(bill.payment);
+                  bill._products.forEach(p => {
+                    basePrices += (p.basePrice * p.quantity);
+                    salePrices += (p.salePrice * p.quantity);
                   });
-                  let response = {
-                    payment: payment,
-                    basePrices: basePrices,
-                    salePrices: salePrices,
-                    expense: expense};
-                  next(null, response);
-                }
+                });
+                let response = {
+                  payment: payment,
+                  basePrices: basePrices,
+                  salePrices: salePrices,
+                  expense: amount};
+                next(null, response);
               }
-            );
-          });
+            }
+          );
+        });
       }
     });
   };
 
-  Shop.remoteMethod('test', {    accepts: [
-    {arg: 'request', type: 'object', http: {source: 'req'}},
-  ],
-    returns: {arg: 'test', type: 'object', root: true},
-    http: {path: '/test', verb: 'get'},
-  });
-
+  function expenseTotalDaily(day, month, year, shopId) {
+    return new Promise(resolve => {
+      Shop.app.models.DailyExpense.find({where: {day: day, month: month,
+        year: year, shopId: shopId}}, (err, res) => {
+        if (res.length > 0) {
+          res.map(exp => {
+            return resolve(parseInt(exp.drinks) + parseInt(exp.shopExp) + parseInt(exp.others));
+          });
+        } else {
+          return resolve(0);
+        }
+      });
+    });
+  }
 };
