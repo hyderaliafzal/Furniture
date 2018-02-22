@@ -58,14 +58,15 @@ module.exports = function(Shop) {
               (err, bills) => {
                 if (bills.length > 0) {
                   let basePrices = 0; let salePrices = 0; let payment = 0;
-                  return new Promise(bills.map(bill=>{
-                    payment += parseInt(bill.payment);
-                    return bill._products.forEach(p => {
-                      basePrices += (p.basePrice * p.quantity);
-                      salePrices += (p.salePrice * p.quantity);
+                  return new Promise(() => {
+                    bills.map(bill => {
+                      payment += parseInt(bill.payment);
+                      return bill._products.forEach(p => {
+                        basePrices += (p.basePrice * p.quantity);
+                        salePrices += (p.salePrice * p.quantity);
+                      });
                     });
-                  })
-                  ).then(() => {
+                  }).then(() => {
                     next(null, {
                       payment: payment,
                       basePrices: basePrices,
@@ -122,20 +123,28 @@ module.exports = function(Shop) {
             day: day, month: month, year: year}},
             (err, bills) => {
               if (bills) {
-                console.log(bills);
+                let count = 1;
                 let basePrices = 0; let salePrices = 0; let payment = 0;
-                return new Promise(bills.map(bill=>{
-                  payment += parseInt(bill.payment);
-                  console.log(bill);
-                  bill._products.forEach(p => {
-                    basePrices += (p.basePrice * p.quantity);
-                    salePrices += (p.salePrice * p.quantity);
+                let discount = 0;
+                return new Promise(resolve => {
+                  bills.map(bill => {
+                    payment += parseInt(bill.payment);
+                    bill._products.forEach(p => {
+                      basePrices += (parseInt(p.basePrice) * parseInt(p.quantity));
+                      salePrices += (parseInt(p.salePrice) * parseInt(p.quantity));
+                      discount += parseInt(p.discount);
+                    });
                   });
-                })).then(() => {
+                  count ++;
+                  if (count === bills.length) {
+                    return resolve();
+                  }
+                }).then(() => {
                   let response = {
                     payment: payment,
                     basePrices: basePrices,
                     salePrices: salePrices,
+                    discount: discount,
                     expense: amount,
                   };
                   next(null, response);

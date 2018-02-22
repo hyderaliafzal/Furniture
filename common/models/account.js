@@ -33,7 +33,6 @@ module.exports = function(Account) {
   });
 
   Account.role = (ctx, next) => {
-    console.log(ctx);
     Account.app.models.RoleMapping.findOne({where: {principalId: ctx.accessToken.userId},
       include: {relation: 'role'},
       scope: {include: ['Role']}}, (err, res) => {

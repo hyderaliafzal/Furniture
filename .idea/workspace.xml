@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d158e2ce-d359-4185-965f-153178b45791" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/account.js" afterPath="$PROJECT_DIR$/common/models/account.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/shop.js" afterPath="$PROJECT_DIR$/common/models/shop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/boot/shop-create.js" afterPath="$PROJECT_DIR$/server/boot/shop-create.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,11 +34,10 @@
       <file leaf-file-name="shop.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/models/shop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="135" column="32" lean-forward="false" selection-start-line="135" selection-start-column="32" selection-end-line="135" selection-end-column="32" />
+            <state relative-caret-position="326">
+              <caret line="98" column="13" lean-forward="true" selection-start-line="98" selection-start-column="13" selection-end-line="98" selection-end-column="13" />
               <folding>
-                <element signature="e#2800#3341#0" expanded="false" />
-                <element signature="e#3387#3647#0" expanded="false" />
+                <marker date="1519318105452" expanded="false" signature="3431:3691" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -77,8 +78,8 @@
       <file leaf-file-name="shop-create.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -113,7 +114,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/server/server.js" />
-        <option value="$PROJECT_DIR$/common/models/account.js" />
         <option value="$PROJECT_DIR$/common/models/shop.json" />
         <option value="$PROJECT_DIR$/common/models/brand-dues.json" />
         <option value="$PROJECT_DIR$/server/cron/midnight.js" />
@@ -130,9 +130,10 @@
         <option value="$PROJECT_DIR$/common/models/category.json" />
         <option value="$PROJECT_DIR$/common/models/expense.json" />
         <option value="$PROJECT_DIR$/common/models/daily-expense.json" />
-        <option value="$PROJECT_DIR$/server/boot/shop-create.js" />
         <option value="$PROJECT_DIR$/common/models/bill.js" />
         <option value="$PROJECT_DIR$/server/boot/midnight.js" />
+        <option value="$PROJECT_DIR$/server/boot/shop-create.js" />
+        <option value="$PROJECT_DIR$/common/models/account.js" />
         <option value="$PROJECT_DIR$/common/models/shop.js" />
       </list>
     </option>
@@ -276,12 +277,12 @@
       <workItem from="1519178481004" duration="2739000" />
       <workItem from="1519235793037" duration="67000" />
       <workItem from="1519265829783" duration="2615000" />
-      <workItem from="1519314804499" duration="1236000" />
+      <workItem from="1519314804499" duration="3312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78166000" />
+    <option name="totallyTimeSpent" value="80242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="215" y="24" width="1137" height="744" extended-state="4" />
@@ -509,13 +510,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/datasources.production.json" />
-    <entry file="file://$PROJECT_DIR$/common/models/account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/brand-dues.json" />
     <entry file="file://$PROJECT_DIR$/common/models/brand.js" />
     <entry file="file://$PROJECT_DIR$/common/models/product.json">
@@ -629,14 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/bill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -658,13 +644,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/shop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="135" column="32" lean-forward="false" selection-start-line="135" selection-start-column="32" selection-end-line="135" selection-end-column="32" />
+        <state relative-caret-position="326">
+          <caret line="98" column="13" lean-forward="true" selection-start-line="98" selection-start-column="13" selection-end-line="98" selection-end-column="13" />
           <folding>
-            <element signature="e#2800#3341#0" expanded="false" />
-            <element signature="e#3387#3647#0" expanded="false" />
+            <marker date="1519318105452" expanded="false" signature="3431:3691" ph="{...}" />
           </folding>
         </state>
       </provider>
