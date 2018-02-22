@@ -122,9 +122,11 @@ module.exports = function(Shop) {
             day: day, month: month, year: year}},
             (err, bills) => {
               if (bills) {
+                console.log(bills);
                 let basePrices = 0; let salePrices = 0; let payment = 0;
                 return new Promise(bills.map(bill=>{
                   payment += parseInt(bill.payment);
+                  console.log(bill);
                   bill._products.forEach(p => {
                     basePrices += (p.basePrice * p.quantity);
                     salePrices += (p.salePrice * p.quantity);
