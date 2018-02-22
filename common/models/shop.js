@@ -123,19 +123,21 @@ module.exports = function(Shop) {
             (err, bills) => {
               if (bills) {
                 let basePrices = 0; let salePrices = 0; let payment = 0;
-                bills.map(bill=>{
+                return new Promise(bills.map(bill=>{
                   payment += parseInt(bill.payment);
                   bill._products.forEach(p => {
                     basePrices += (p.basePrice * p.quantity);
                     salePrices += (p.salePrice * p.quantity);
                   });
+                })).then(() => {
+                  let response = {
+                    payment: payment,
+                    basePrices: basePrices,
+                    salePrices: salePrices,
+                    expense: amount,
+                  };
+                  next(null, response);
                 });
-                let response = {
-                  payment: payment,
-                  basePrices: basePrices,
-                  salePrices: salePrices,
-                  expense: amount};
-                next(null, response);
               }
             }
           );

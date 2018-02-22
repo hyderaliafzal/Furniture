@@ -14,7 +14,7 @@ weekday[6] = 'Saturday';
 var n = weekday[d.getDay()];
 var j = schedule.scheduleJob('* * * * * *', function() {
   let brandpayments = [];
-  /*findShop().then(shops => {
+  findShop().then(shops => {
     if (shops.length > 0) {
       shops.map(shop => {
         for (let count = 0; count < 7; count++) {
@@ -31,7 +31,7 @@ var j = schedule.scheduleJob('* * * * * *', function() {
         }
       });
     }
-  });*/
+  });
   /* models.Shop.find({}, (err, shops) => {
     if (shops) {
       shops.map(shop => {
