@@ -129,10 +129,10 @@ module.exports = function(Shop) {
                 return new Promise(resolve => {
                   bills.map(bill => {
                     payment += parseInt(bill.payment);
+                    discount += parseInt(bill.discount);
                     bill._products.forEach(p => {
                       basePrices += (parseInt(p.basePrice) * parseInt(p.quantity));
                       salePrices += (parseInt(p.salePrice) * parseInt(p.quantity));
-                      discount += parseInt(p.discount);
                     });
                   });
                   count ++;
