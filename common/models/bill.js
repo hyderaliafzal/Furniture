@@ -4,35 +4,36 @@ module.exports = function(Bill) {
   Bill.beforeRemote('prototype.patchAttributes', (ctx, instance, next) => {
     ctx.args.data._products = ctx.args.data.newProducts;
     let count = 0;
-    ctx.instance._products.map(product => {
+    ctx.instance._products.map((product, index) => {
       Bill.app.models.Product.findById(product.productId,
       (err, productRes) => {
-        if(err){
+        if (err || productRes === null) {
           return next(err, null);
         }
+        ctx.instance._products[index].brand = productRes.brand;
         let quantity = parseInt(productRes.quantity) + parseInt(product.quantity);
         Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
           (err, res) => {
-          count ++;
-          if(count === ctx.instance._products.length){
-            count = 0;
-            ctx.args.data.newProducts.map(product => {
-              Bill.app.models.Product.findById(product.productId, (err, productRes) => {
-                if(err){
-                  return next(err, null);
-                }
-              let quantity = parseInt(productRes.quantity) - parseInt(product.quantity);
-                Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
-                  (err, res) => {
-                  count++;
-                  if(count === ctx.args.data.newProducts.length){
-                    next();
+            count ++;
+            if (count === ctx.instance._products.length) {
+              count = 0;
+              ctx.args.data.newProducts.map(product => {
+                Bill.app.models.Product.findById(product.productId, (err, productRes) => {
+                  if (err) {
+                    return next(err, null);
                   }
+                  let quantity = parseInt(productRes.quantity) - parseInt(product.quantity);
+                  Bill.app.models.Product.updateAll({id: product.productId}, {quantity: quantity},
+                  (err, res) => {
+                    count++;
+                    if (count === ctx.args.data.newProducts.length) {
+                      next();
+                    }
+                  });
                 });
-            })
-            });
-          }
-        });
+              });
+            }
+          });
       });
     });
   });
@@ -47,7 +48,7 @@ module.exports = function(Bill) {
 
   Bill.bills = (shopId, day, month, year, next) => {
     Bill.find({where: {shopId: shopId, day: day, month: month, year: year}}, (err, bills) => {
-      if(bills){
+      if (bills) {
         next(null, bills);
       } else {
         next(null, []);

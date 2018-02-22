@@ -56,25 +56,26 @@ module.exports = function(Shop) {
               {where: {shopId: shopId, status: 'Paid',
                 month: month, year: year}},
               (err, bills) => {
-                if (bills) {
+                if (bills.length > 0) {
                   let basePrices = 0; let salePrices = 0; let payment = 0;
-                  bills.map(bill=>{
+                  return new Promise(bills.map(bill=>{
                     payment += parseInt(bill.payment);
-                    bill._products.forEach(p => {
+                    return bill._products.forEach(p => {
                       basePrices += (p.basePrice * p.quantity);
                       salePrices += (p.salePrice * p.quantity);
                     });
-                  });
-                  let response = {
-                    payment: payment,
-                    basePrices: basePrices,
-                    salePrices: salePrices,
-                    expense: expense,
-                    dailyExp: expenseTotalMonthly(month, year, shopId)};
-                  next(null, response);
+                  })
+                  ).then(() => {
+                    next(null, {
+                      payment: payment,
+                      basePrices: basePrices,
+                      salePrices: salePrices,
+                      expense: expense,
+                      monthlyExp: expenseTotalMonthly(month, year, shopId)});
+                  }
+                );
                 }
-              }
-            );
+              });
           });
       }
     });
@@ -157,4 +158,17 @@ module.exports = function(Shop) {
       });
     });
   }
+
+  Shop.remoteMethod('getYearReport', {
+    accepts: [{arg: 'shopId', type: 'string'},
+      {arg: 'year', type: 'string'}],
+    returns: {arg: 'Report', type: 'object'},
+    http: {path: '/getYearReport', verb: 'get'},
+  });
+
+  Shop.getYearReport = (shopId, year) => {
+    for (let i = 1; i < 13; i++) {
+
+    }
+  };
 };
