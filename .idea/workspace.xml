@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d158e2ce-d359-4185-965f-153178b45791" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/server/boot/midnight.js" afterPath="$PROJECT_DIR$/server/boot/midnight.js" />
       <change beforePath="$PROJECT_DIR$/server/boot/shop-create.js" afterPath="$PROJECT_DIR$/server/boot/shop-create.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,21 +21,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="midnight.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="midnight.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/boot/midnight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="899">
-              <caret line="89" column="1" lean-forward="false" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+            <state relative-caret-position="359">
+              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shop-create.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shop-create.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -80,8 +81,8 @@
         <option value="$PROJECT_DIR$/common/models/account.js" />
         <option value="$PROJECT_DIR$/common/models/expense.json" />
         <option value="$PROJECT_DIR$/common/models/shop.js" />
-        <option value="$PROJECT_DIR$/server/boot/midnight.js" />
         <option value="$PROJECT_DIR$/server/boot/shop-create.js" />
+        <option value="$PROJECT_DIR$/server/boot/midnight.js" />
       </list>
     </option>
   </component>
@@ -237,12 +238,12 @@
       <workItem from="1519314804499" duration="4278000" />
       <workItem from="1519350945217" duration="5297000" />
       <workItem from="1519374718339" duration="5501000" />
-      <workItem from="1519388106864" duration="109000" />
+      <workItem from="1519388106864" duration="790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92115000" />
+    <option name="totallyTimeSpent" value="92796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="215" y="24" width="1137" height="1056" extended-state="4" />
@@ -608,18 +609,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/boot/midnight.js">
+    <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
-          <caret line="89" column="1" lean-forward="false" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+        <state relative-caret-position="144">
+          <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/boot/shop-create.js">
+    <entry file="file://$PROJECT_DIR$/server/boot/midnight.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="359">
+          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
           <folding />
         </state>
       </provider>

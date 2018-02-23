@@ -71,8 +71,14 @@ findShop().then(shops => {
                   }
                 });
               }).then(() => {
-                console.log(finalBPayment, d);
-                // models.BrandDues.create()
+                let date = d.toLocaleDateString().split('-');
+                finalBPayment.day = date[2];
+                finalBPayment.month = date[1];
+                finalBPayment.year = date[0];
+                console.log(finalBPayment, d.toLocaleDateString());
+                /*models.BrandDues.create(finalBPayment, (err, res) => {
+
+                });*/
               });
             });
           }
