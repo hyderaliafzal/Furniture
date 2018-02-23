@@ -17,13 +17,13 @@
       "type": "string"
     },
     "committee": {
-      "type": "string"
+      "type": "number"
     },
     "stockWorth": {
-      "type": "string"
+      "type": "number"
     },
     "extra": {
-      "type": "object"
+      "type": "number"
     },
     "housholds": {
       "type": "string"

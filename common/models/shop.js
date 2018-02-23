@@ -14,7 +14,6 @@ module.exports = function(Shop) {
       scope: {include: ['Role']}},
   (err, role) => {
     if (role) {
-      console.log(role.toJSON().role);
       if (role.toJSON().role.name === 'superAdmin') {
         Shop.find((err, shop) => {
           next(null, shop);
@@ -23,7 +22,6 @@ module.exports = function(Shop) {
         Shop.app.models.Account.findById(userId, (err, account) => {
           Shop.findById(account.shopId, (err, shop) => {
             if (shop) {
-              console.log(shop);
               return next(null, [shop]);
             } else {
               return next(null, []);
@@ -58,21 +56,35 @@ module.exports = function(Shop) {
               (err, bills) => {
                 if (bills.length > 0) {
                   let basePrices = 0; let salePrices = 0; let payment = 0;
-                  return new Promise(() => {
+                  let discount = 0;
+                  return new Promise(resolve => {
+                    let count = 0;
                     bills.map(bill => {
                       payment += parseInt(bill.payment);
-                      return bill._products.forEach(p => {
+                      discount += parseInt(bill.discount);
+                      bill._products.forEach(p => {
                         basePrices += (p.basePrice * p.quantity);
                         salePrices += (p.salePrice * p.quantity);
                       });
+                      count++;
+                      if (count === bills.length) {
+                        return resolve();
+                      }
                     });
                   }).then(() => {
-                    next(null, {
-                      payment: payment,
-                      basePrices: basePrices,
-                      salePrices: salePrices,
-                      expense: expense,
-                      monthlyExp: expenseTotalMonthly(month, year, shopId)});
+                    expenseTotalMonthly(month, year, shopId).then(result => {
+                      let exp = 0;
+                      if (expense.length > 0) {
+                        exp = parseInt(expense[0].salaries) + parseInt(expense[0].committee) + parseInt(expense[0].extra) + parseInt(expense[0].housholds);
+                      }
+                      next(null, {
+                        payment: payment,
+                        discount: discount,
+                        basePrices: basePrices,
+                        salePrices: salePrices,
+                        expense: exp,
+                        dailyExp: result});
+                    });
                   }
                 );
                 }
@@ -87,9 +99,10 @@ module.exports = function(Shop) {
       Shop.app.models.DailyExpense.find({where: {
         shopId: shopId, month: month, year: year,
       }}, (err, expense) => {
+        console.log(expense);
         if (expense.length > 0) {
           let amount = 0;
-          let count = 1;
+          let count = 0;
           expense.map(exp => {
             amount += parseInt(exp.drinks) + parseInt(exp.shopExp) + parseInt(exp.others);
             count++;
@@ -122,10 +135,11 @@ module.exports = function(Shop) {
           Shop.app.models.Bill.find({where: {shopId: shopId, status: 'Paid',
             day: day, month: month, year: year}},
             (err, bills) => {
-              if (bills) {
-                let count = 1;
+              if (bills.length > 0) {
+                let count = 0;
                 let basePrices = 0; let salePrices = 0; let payment = 0;
                 let discount = 0;
+                console.log(bills);
                 return new Promise(resolve => {
                   bills.map(bill => {
                     payment += parseInt(bill.payment);
@@ -134,11 +148,11 @@ module.exports = function(Shop) {
                       basePrices += (parseInt(p.basePrice) * parseInt(p.quantity));
                       salePrices += (parseInt(p.salePrice) * parseInt(p.quantity));
                     });
+                    count ++;
+                    if (count === bills.length) {
+                      return resolve();
+                    }
                   });
-                  count ++;
-                  if (count === bills.length) {
-                    return resolve();
-                  }
                 }).then(() => {
                   let response = {
                     payment: payment,
@@ -149,6 +163,15 @@ module.exports = function(Shop) {
                   };
                   next(null, response);
                 });
+              } else {
+                let response = {
+                  payment: 0,
+                  basePrices: 0,
+                  salePrices: 0,
+                  discount: 0,
+                  expense: amount,
+                };
+                next(null, response);
               }
             }
           );
@@ -162,9 +185,8 @@ module.exports = function(Shop) {
       Shop.app.models.DailyExpense.find({where: {day: day, month: month,
         year: year, shopId: shopId}}, (err, res) => {
         if (res.length > 0) {
-          res.map(exp => {
-            return resolve(parseInt(exp.drinks) + parseInt(exp.shopExp) + parseInt(exp.others));
-          });
+          console.log(res);
+          return resolve(parseInt(res[0].drinks) + parseInt(res[0].shopExp) + parseInt(res[0].others));
         } else {
           return resolve(0);
         }
