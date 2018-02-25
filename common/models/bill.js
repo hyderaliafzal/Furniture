@@ -82,4 +82,14 @@ module.exports = function(Bill) {
           });
     });
   });
+
+  Bill.findBills = (shopId, day, month, year) => {
+    Bill.find({where: {shopId: shopId, day: day, month: month, year: year}},
+      (err, res) => {
+        if (err) {
+          return err;
+        }
+        return res;
+      });
+  };
 };
