@@ -24,7 +24,7 @@ var j = schedule.scheduleJob('* * * 0 0 0', function() {
     });
   }
 });
-
+shopOne();
 function shopOne() {
   let brandpayments = [];
   let bills = [];
@@ -34,7 +34,8 @@ function shopOne() {
   each(counter, (count, next) => {
     let date = moment().subtract(count, 'day').format('YYYY-M-DD');
     date = date.split('-');
-    models.Bill.find({where: {shopId: '5a83107bf56f6b2aab5b97ae', day: date[2], month: date[1], year: date[0]}},
+    models.Bill.find({where: {shopId: '5a83107bf56f6b2aab5b97ae', day: date[2],
+      month: date[1], year: date[0]}},
       (err, bill) => {
         if (bill.length > 0) {
           bills.push(bill);
@@ -89,10 +90,18 @@ function shopOne() {
             count++;
           });
           console.log(finalPayments, d.toLocaleDateString());
-          models.BrandDues.create(finalPayments, (err, res) => {
-            next();
+          let brands = [];
+          finalPayments.map(b => {
+            brands.push(b.brand);
           });
-          // next();
+          console.log(brands);
+          models.Product.find({where: {'shopId': '5a83107bf56f6b2aab5b97ae',
+            brand: {inq: brands}}}, (err, res) => {
+            console.log(res);
+          });
+          // models.BrandDues.create(finalPayments, (err, res) => {
+          //   next();
+          // });
         }
       });
   });
