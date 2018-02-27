@@ -24,7 +24,7 @@ var j = schedule.scheduleJob('* * * 0 0 0', function() {
     });
   }
 });
-shopOne();
+// shopOne();
 function shopOne() {
   let brandpayments = [];
   let bills = [];
