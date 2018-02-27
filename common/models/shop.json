@@ -80,7 +80,7 @@
       "principalType": "ROLE",
       "principalId": "Employee",
       "permission": "ALLOW",
-      "property": ["shop", "find"]
+      "property": ["shop", "findById"]
     },
     {
       "accessType": "*",
