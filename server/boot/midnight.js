@@ -24,7 +24,7 @@ var j = schedule.scheduleJob('* * * 0 0 0', function() {
     });
   }
 });
-// shopOne();
+shopOne();
 function shopOne() {
   let brandpayments = [];
   let bills = [];
@@ -51,6 +51,38 @@ function shopOne() {
             count++;
           });
           billProducts = _.flatMap(billProducts);
+          billProducts.map(product => {
+            brandpayments.push({
+              shopId: '5a83107bf56f6b2aab5b97ae',
+              brand: product.brand,
+              amount: parseInt(product.quantity) * parseInt(product.basePrice),
+            });
+          });
+          brandpayments.map((bp, index) => {
+            console.log(index);
+            let date = d.toLocaleDateString().split('-');
+            if (finalPayments.length === 0) {
+              bp.day = date[2];
+              bp.month = date[1];
+              bp.year = date[0];
+              bp.shopId = '5a83107bf56f6b2aab5b97ae';
+              finalPayments.push(bp);
+            } else {
+              finalPayments.map((fp, ind) => {
+                if (fp.brand === bp.brand) {
+                  finalPayments[ind].amount += bp.amount;
+                } else {
+                  bp.day = date[2];
+                  bp.month = date[1];
+                  bp.year = date[0];
+                  bp.shopId = '5a83107bf56f6b2aab5b97ae';
+                  finalPayments.push(bp);
+                }
+              });
+            }
+          });
+          console.log(finalPayments);
+          /*
           count = 1;
           each(billProducts, (product, next2) => {
             brandpayments.push({
@@ -62,7 +94,7 @@ function shopOne() {
             }
             count++;
           });
-          count = 1;
+           count = 1;
           each(brandpayments, (bpayment, next2) => {
             let date = d.toLocaleDateString().split('-');
             if (finalPayments.length === 0) {
@@ -88,16 +120,25 @@ function shopOne() {
               next2();
             }
             count++;
+          }); */
+          console.log(billProducts, d.toLocaleDateString());
+          brandpayments.map(pb => {
+
           });
-          console.log(finalPayments, d.toLocaleDateString());
           let brands = [];
           finalPayments.map(b => {
             brands.push(b.brand);
           });
-          console.log(brands);
-          models.Product.find({where: {'shopId': '5a83107bf56f6b2aab5b97ae',
-            brand: {inq: brands}}}, (err, res) => {
-            console.log(res);
+          let shopProducts;
+          models.Product.find({where: {brand: {inq: brands}}}, (err, res) => {
+            if (res.length > 0) {
+              res.map(product => {
+                if (product.shopId === '5a83107bf56f6b2aab5b97ae') {
+                  shopProducts.push(product);
+                }
+              });
+              console.log(shopProducts);
+            }
           });
           // models.BrandDues.create(finalPayments, (err, res) => {
           //   next();
