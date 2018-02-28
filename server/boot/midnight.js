@@ -4,6 +4,7 @@ var moment = require('moment');
 var schedule = require('node-schedule');
 const each = require('async/each');
 const _ = require('lodash');
+const {map} = require('lodash');
 var d = new Date();
 var weekday = new Array(7);
 weekday[0] =  'Sunday';
@@ -43,13 +44,7 @@ function shopOne() {
         if (count === 6) {
           bills = _.flatMap(bills);
           let count = 1;
-          each(bills, (bill, next2) => {
-            billProducts.push(bill._products);
-            if (count === bills.length) {
-              next2();
-            }
-            count++;
-          });
+          billProducts = _.map(bills, bill => bill._products);
           billProducts = _.flatMap(billProducts);
           billProducts.map(product => {
             brandpayments.push({
@@ -61,25 +56,27 @@ function shopOne() {
           brandpayments.map((bp, index) => {
             console.log(index);
             let date = d.toLocaleDateString().split('-');
-            if (finalPayments.length === 0) {
+            if (finalPayments.length < 1) {
               bp.day = date[2];
               bp.month = date[1];
               bp.year = date[0];
               bp.shopId = '5a83107bf56f6b2aab5b97ae';
               finalPayments.push(bp);
-            } else {
-              finalPayments.map((fp, ind) => {
-                if (fp.brand === bp.brand) {
-                  finalPayments[ind].amount += bp.amount;
-                } else {
-                  bp.day = date[2];
-                  bp.month = date[1];
-                  bp.year = date[0];
-                  bp.shopId = '5a83107bf56f6b2aab5b97ae';
-                  finalPayments.push(bp);
-                }
-              });
             }
+            finalPayments.map((fp, ind) => {
+              if (fp.brand === bp.brand) {
+                finalPayments[ind].amount += bp.amount;
+                console.log('brand found', fp.brand, bp.brand, finalPayments[ind].amount, ind);
+              }
+              if (fp.brand !== bp.brand) {
+                console.log('else', fp.brand, bp.brand,  ind);
+                bp.day = date[2];
+                bp.month = date[1];
+                bp.year = date[0];
+                bp.shopId = '5a83107bf56f6b2aab5b97ae';
+                finalPayments.push(bp);
+              }
+            });
           });
           console.log(finalPayments);
           /*
