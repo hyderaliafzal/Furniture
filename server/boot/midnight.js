@@ -54,7 +54,6 @@ function shopOne() {
             });
           });
           brandpayments.map((bp, index) => {
-            console.log(index);
             let date = d.toLocaleDateString().split('-');
             if (finalPayments.length < 1) {
               bp.day = date[2];
@@ -66,10 +65,8 @@ function shopOne() {
             finalPayments.map((fp, ind) => {
               if (fp.brand === bp.brand) {
                 finalPayments[ind].amount += bp.amount;
-                console.log('brand found', fp.brand, bp.brand, finalPayments[ind].amount, ind);
               }
               if (fp.brand !== bp.brand) {
-                console.log('else', fp.brand, bp.brand,  ind);
                 bp.day = date[2];
                 bp.month = date[1];
                 bp.year = date[0];
@@ -78,65 +75,20 @@ function shopOne() {
               }
             });
           });
-          console.log(finalPayments);
-          /*
-          count = 1;
-          each(billProducts, (product, next2) => {
-            brandpayments.push({
-              brand: product.brand,
-              amount: parseInt(product.quantity) * parseInt(product.basePrice),
-            });
-            if (count === billProducts.length) {
-              next2();
-            }
-            count++;
-          });
-           count = 1;
-          each(brandpayments, (bpayment, next2) => {
-            let date = d.toLocaleDateString().split('-');
-            if (finalPayments.length === 0) {
-              bpayment.day = date[2];
-              bpayment.month = date[1];
-              bpayment.year = date[0];
-              bpayment.shopId = '5a83107bf56f6b2aab5b97ae';
-              finalPayments.push(bpayment);
-            } else {
-              finalPayments.map((bp, index) => {
-                if (bp.brand === bpayment.brand) {
-                  finalPayments[index].amount += parseInt(bpayment.amount);
-                } else {
-                  bpayment.day = date[2];
-                  bpayment.month = date[1];
-                  bpayment.year = date[0];
-                  bpayment.shopId = '5a83107bf56f6b2aab5b97ae';
-                  finalPayments.push(bpayment);
-                }
-              });
-            }
-            if (count === brandpayments.length) {
-              next2();
-            }
-            count++;
-          }); */
-          console.log(billProducts, d.toLocaleDateString());
-          brandpayments.map(pb => {
-
-          });
-          let brands = [];
-          finalPayments.map(b => {
-            brands.push(b.brand);
-          });
+          let brands = finalPayments.map(fp => { return fp.brand; });
           let shopProducts;
-          models.Product.find({where: {brand: {inq: brands}}}, (err, res) => {
-            if (res.length > 0) {
-              res.map(product => {
-                if (product.shopId === '5a83107bf56f6b2aab5b97ae') {
-                  shopProducts.push(product);
-                }
-              });
-              console.log(shopProducts);
-            }
-          });
+          console.log(finalPayments, brands);
+          models.Product.find({where: {brand: {inq: brands}}},
+            (err, res) => {
+              if (res.length > 0) {
+                shopProducts = res.map(product => {
+                  if (product.shopId === '5a83107bf56f6b2aab5b97ae') {
+                    return product;
+                  }
+                });
+                console.log(shopProducts);
+              }
+            });
           // models.BrandDues.create(finalPayments, (err, res) => {
           //   next();
           // });
