@@ -23,9 +23,12 @@
       <file leaf-file-name="midnight.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/boot/midnight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="90">
+              <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+              <folding>
+                <element signature="n#!!block;n#shopOne#0" expanded="false" />
+                <element signature="n#!!block;n#shopTwo#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -238,12 +241,12 @@
       <workItem from="1519633858309" duration="3403000" />
       <workItem from="1519706871052" duration="664000" />
       <workItem from="1519727572711" duration="3203000" />
-      <workItem from="1519911673474" duration="1617000" />
+      <workItem from="1519911673474" duration="4946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122582000" />
+    <option name="totallyTimeSpent" value="125911000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1319" height="772" extended-state="6" />
@@ -620,9 +623,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/boot/midnight.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="90">
+          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!block;n#shopOne#0" expanded="false" />
+            <element signature="n#!!block;n#shopTwo#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
