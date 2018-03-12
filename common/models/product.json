@@ -93,6 +93,13 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
+      "principalId": "Employee",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
       "principalId": "superAdmin",
       "permission": "ALLOW"
     }
